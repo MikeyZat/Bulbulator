@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import RunButton from './RunButton'
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      isRunning:false,
+      numOfClicks:0
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(){
+    let isRunning = true;
+    let newNumOfClicks = this.state.numOfClicks+1;
+    this.setState({
+        isRunning: isRunning,
+        numOfClicks: newNumOfClicks
+    });
+  }
+
+
+
   render() {
+    let style={
+          color: this.state.isRunning ? "#e0e0eb":"#282c34",
+          background: this.state.isRunning ?"#282c34":"#e0e0eb"
+      };
+    let message = this.state.isRunning? "Bulbulator is running":"New and amazing bulbulator";
     return (
-      <div className="App">
+      <div className="App" style={style}>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+            {message}
         </header>
+          <RunButton onClick={this.handleClick} isRunning={this.state.isRunning} numOfClicks={this.state.numOfClicks}/>
       </div>
     );
   }

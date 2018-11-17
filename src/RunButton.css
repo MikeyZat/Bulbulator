@@ -1,0 +1,17 @@
+button{
+    margin:30px;
+    padding:25px;
+    font-size: calc(15px + 2vmin);
+    border-radius: 50% ;
+    background: #282c34;
+    color:#e0e0eb;
+    border:none;
+}
+
+button:active{
+    padding: 33px 38px 31px;
+}
+
+button:hover{
+    cursor:pointer;
+}
