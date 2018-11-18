@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./Bul.css";
+import './Bul.css';
 export default class Bul extends Component{
 
     render(){
@@ -8,7 +8,8 @@ export default class Bul extends Component{
             left: this.props.positionLeft,
             top: this.props.positionTop,
             color: this.props.color,
-            fontSize:"calc("+this.props.size+"px + 2vmin)"
+            fontSize:"calc("+this.props.size+"px + 2vmin",
+            zIndex:"2"
         };
         let bul = "";
         for(let i=0;i<this.props.numOfBuls;i++){

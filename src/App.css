@@ -9,13 +9,10 @@
 
 
 .App-header {
+  z-index: 1;
   width:auto;
   height:auto;
   font-size: calc(35px + 2vmin);
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 

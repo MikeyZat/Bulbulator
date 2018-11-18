@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import RunButton from './RunButton';
 import Bul from './Bul';
+import Title from './Title';
 import {random} from './helpers';
 
 class App extends Component {
@@ -11,24 +12,40 @@ class App extends Component {
         this.state = {
             isRunning: false,
             numOfClicks: 0,
-            buls: []
+            buls: [],
+            isTitleHovered:false
         };
 
         this.colors=["#ccff33","#008000","#ff6666","#8080ff","#3d3d5c","#ffaa00"," #ffcc00","#ffb3e6","#80ffff","white","black"];
 
         this.handleClick = this.handleClick.bind(this);
         this.createBul = this.createBul.bind(this);
+        // this.handleHover = this.handleHover.bind(this);
+        // this.handleMouseOut = this.handleMouseOut.bind(this);
     }
 
     handleClick() {
         let isRunning = true;
         let newNumOfClicks = this.state.numOfClicks + 1;
-        setInterval(this.createBul,2000/newNumOfClicks);
+        if(newNumOfClicks<10)
+            setInterval(this.createBul,2000-100* newNumOfClicks);
         this.setState({
             isRunning: isRunning,
             numOfClicks: newNumOfClicks
         });
     }
+
+        // handleHover(){
+        //     this.setState({
+        //         isTitleHovered:true
+        //         });
+        // }
+        //
+        // handleMouseOut(){
+        //     this.setState({
+        //         isTitleHovered:false
+        //     });
+        // }
 
     createBul(){
         let newBuls = this.state.buls.slice(0);
@@ -62,7 +79,7 @@ class App extends Component {
             <div className="App" style={style}>
                 {this.state.buls}
                 <header className="App-header">
-                    {message}
+                        <Title isRunning={this.state.isRunning} message={message}/>
                 </header>
                 <RunButton onClick={this.handleClick} isRunning={this.state.isRunning}
                            numOfClicks={this.state.numOfClicks}/>
